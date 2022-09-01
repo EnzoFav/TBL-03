@@ -11,14 +11,14 @@ A saída do seu programa será no terminal padrão do sistema e constituirá de 
 para cada expressão lógica de entrada contendo ou a palavra valida ou a palavra inválida e nada mais."""
 
 biblioteca1 = ["T", "F"]
-biblioteca2 = [ r"\neg","(", ")", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+biblioteca2 = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
                "m", "n", "o", "p", "q", "r", "s", "t", "u", "w", "v", "x", "y", "z"]
 biblioteca3 = [ "\dis", "\con", "\imp", r"\bimp"]
+biblioteca4 = ["(", ")", r"\neg"]
 
 def Inicio():
 
     lista = []
-    lista2 = []
     filename = input("Digite o nome do arquivo com a devida extensão (EX: Teste.txt):")
     with open(filename, "r") as file:
         line = file.readlines()
@@ -39,7 +39,7 @@ def Inicio():
 def TermosValidos(Exp):
     lista3 = Exp.split(" ")
     for x in range(0, len(lista3)):
-        if (lista3[x] not in biblioteca1) and (lista3[x] not in biblioteca2) and (lista3[x] not in biblioteca3):
+        if (lista3[x] not in biblioteca1) and (lista3[x] not in biblioteca2) and (lista3[x] not in biblioteca3) and (lista3[x] not in biblioteca4):
             return False
 
         else:
@@ -53,13 +53,10 @@ def ExpValida(Exp):
     cont2 = 0
     for x in range(0, len(Exp)):
 
-        if Exp[x] in biblioteca1 and Exp[x + 1] in biblioteca1:
+        if Exp[x] in biblioteca1 and (Exp[x + 1] in biblioteca1):
             return False
 
-        elif Exp[x] in biblioteca2 and Exp[x + 1] in biblioteca2:
-            return False
-
-        elif Exp[x] == r"\neg" and ((Exp[x + 1] in biblioteca3) or (Exp[x] == ")")):
+        elif Exp[x] == r"\neg" and (Exp[x + 1] in biblioteca3):
             return False
 
         elif Exp[x] == r"\dis" and (Exp[x + 1] in biblioteca3):
@@ -75,6 +72,9 @@ def ExpValida(Exp):
             return False
 
         elif Exp[x] == "(" and Exp[x + 1] == ")":
+            return False
+
+        elif Exp[x] == ")" and Exp[x + 1] == "(":
             return False
 
         if Exp[x] == "(":
