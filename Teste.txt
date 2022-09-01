@@ -1,0 +1,4 @@
+3
+( T \dis m ) \bimp ( ( a \imp b ) \imp t ) \dis ( 4 \con \neg 6 )
+( T \bimp \dis )
+( m \dis \neg ( a \dis b ) )
