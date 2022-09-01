@@ -1,4 +1,4 @@
 3
 ( a \dis b \dis c ) \con ( b \bimp c )
-( a \dis b \dis c ) \con ( b c )
-( a \dis \con ( b \bimp c )
+( a \dis b \dis c ) ( b /bimp c )
+( a \dis \con ( b \bimp c 
